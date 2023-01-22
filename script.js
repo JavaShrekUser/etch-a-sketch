@@ -1,5 +1,24 @@
 let mouseColor = '#000000';
 let pixleValue = 16;
+let colorCondition = '';
+let penCondition = 'pen'
+
+
+const checkPen = document.querySelector('button.paint');
+checkPen.addEventListener('click',changeToPen);
+
+function changeToPen(){
+    penCondition = 'pen';
+}
+
+
+const checkEraser = document.querySelector('button.eraser');
+checkEraser.addEventListener('click',changeToEraser);
+
+function changeToEraser(){
+    penCondition = 'eraser';
+}
+
 
 
 //making color squares
@@ -71,10 +90,31 @@ function paint(){
     boxes.forEach(box => {box.addEventListener('mouseenter',changeColor)
     });    
 }
+
 paint()
 
+
+//Change color function. According to the button value, funtion will change to eraser mode. 
 function changeColor(e){
-    e.target.style.backgroundColor = mouseColor
+    if(penCondition==='pen'){
+        e.target.style.backgroundColor = mouseColor;
+    }
+    else if (penCondition==='eraser'){
+        e.target.style.backgroundColor = 'white';
+    }
 }
+
+
+const clearScreen = document.querySelector('button.clear');
+clearScreen.addEventListener('click',clear);
+
+//clear the board
+function clear(){
+    const boxes = document.querySelectorAll('div.square');
+    boxes.forEach(box => { box.style.backgroundColor = 'white'       
+    });
+
+}
+
 
 
