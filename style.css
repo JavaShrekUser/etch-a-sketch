@@ -1,7 +1,6 @@
 .square{
     background-color: white;
     border: 1px solid green;
-
 }
 
 .row-container{
@@ -14,3 +13,159 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+
+/*-------------------------------------- paint switch --------------------------------------*/
+
+.switch {
+    position: relative;
+    display: flex;
+    width: 125px;
+    height: 34px;
+   }
+   
+   .switch input {
+    display: none;
+   }
+   
+   .cslider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #504d4d;
+    transition: .3s;
+    border-radius: 30px;
+   }
+   
+   .cslider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+   }
+   
+   input:checked + .cslider {
+    background-color: #1983d5;
+   }
+   
+   input:checked + .cslider:before {
+    transform: translateX(91px);
+   }
+   
+   .cslider:after {
+    content: 'DISABLED';
+    color: white;
+    display: block;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    font-size: 10px;
+    font-family: Verdana, sans-serif;
+   }
+   
+   input:checked + .cslider:after {
+    content: 'ENABLED';
+   }
+
+/*-------------------------------------- buttons --------------------------------------*/
+
+button{
+    width:170px;
+    height: 42px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    padding: 0;
+    border: 2px solid rgb(0, 0, 0);
+    box-shadow: 3px 3px 10px #888888;
+    color:#fff;
+    font-weight: bolder;
+    font-family: Verdana, sans-serif;
+    font-size: 18px;
+    text-shadow: 1px 1px 2px #444, 2px 2px 4px #ccc;
+}
+
+
+button.random {
+    --width: 170px;
+    --timing: 1s;
+    background-image: linear-gradient(90deg, #53cbef 0%, #dcc66c 50%, #ffa3b6 75%, #53cbef 100%);
+}
+
+button.random:focus{
+    animation: slidernbw 1s linear infinite;
+}
+
+@keyframes slidernbw {
+    to {
+        background-position: var(--width);
+    }
+}
+
+
+button.paint {
+    font-weight: bold;
+    --width: 170px;
+    --timing: 2s;
+    width: var(--width);
+    color: #fff;
+    background-image: linear-gradient(to right, rgb(250, 82, 82), rgb(250, 82, 82) 16.65%, rgb(190, 75, 219) 16.65%, rgb(190, 75, 219) 33.3%, rgb(76, 110, 245) 33.3%, rgb(76, 110, 245) 49.95%, rgb(64, 192, 87) 49.95%, rgb(64, 192, 87) 66.6%, rgb(250, 176, 5) 66.6%, rgb(250, 176, 5) 83.25%, rgb(253, 126, 20) 83.25%, rgb(253, 126, 20) 100%, rgb(250, 82, 82) 100%);    
+  }
+
+button.paint:focus {
+    animation: var(--timing) linear dance6123 infinite;
+}
+  
+@keyframes dance6123 {  
+    to {
+        background-position: var(--width);
+    }  
+}
+  
+
+button.eraser {
+    background-color: #ffce49;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+   }
+   
+button.eraser:before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 120%;
+    background-color: white;
+    top: 50%;
+    transform: skewX(30deg) translate(-150%, -50%);
+    transition: all 0.5s;
+   }
+   
+   
+   button.eraser:focus::before {
+       transform: skewX(30deg) translate(150%, -50%);
+       animation: move-gradient 2s linear infinite;
+   }
+   
+   @keyframes move-gradient {
+       0% {
+           transform: skewX(90deg) translate(-150%, -50%);
+       }
+       100% {
+           transform: skewX(30deg) translate(150%, -50%);
+       }
+   }
+   
+   

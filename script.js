@@ -3,22 +3,27 @@ let pixleValue = 16;
 let colorCondition = '';
 let penCondition = 'pen'
 
+//Enable `focus` at the beginning : class=color button 
+document.querySelector('button.paint').focus();
 
+//check user selection from button.
 const checkPen = document.querySelector('button.paint');
 checkPen.addEventListener('click',changeToPen);
-
 function changeToPen(){
     penCondition = 'pen';
 }
 
-
 const checkEraser = document.querySelector('button.eraser');
 checkEraser.addEventListener('click',changeToEraser);
-
 function changeToEraser(){
     penCondition = 'eraser';
 }
 
+const checkRandom = document.querySelector('button.random');
+checkRandom.addEventListener('click',changeToRandom)
+function changeToRandom(){
+    penCondition = 'random';
+}
 
 
 //making color squares
@@ -90,7 +95,6 @@ function paint(){
     boxes.forEach(box => {box.addEventListener('mouseenter',changeColor)
     });    
 }
-
 paint()
 
 
@@ -101,6 +105,12 @@ function changeColor(e){
     }
     else if (penCondition==='eraser'){
         e.target.style.backgroundColor = 'white';
+    }
+    else if (penCondition==='random'){
+        e.target.style.backgroundColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`
+        
+        Math.floor(Math.random() * 256)
+        "rgb(155, 102, 102)"
     }
 }
 
@@ -113,8 +123,8 @@ function clear(){
     const boxes = document.querySelectorAll('div.square');
     boxes.forEach(box => { box.style.backgroundColor = 'white'       
     });
-
 }
 
 
 
+// 随机颜色 切换操作 
