@@ -1,10 +1,26 @@
 let mouseColor = '#000000';
 let pixleValue = 16;
-let colorCondition = '';
-let penCondition = 'pen'
+let penCondition = 'pen';
+let isClicked = false;
+let isSliding = true;
 
+
+//-----------------------------------------------------------button animation not done---------------------------------
 //Enable `focus` at the beginning : class=color button 
-document.querySelector('button.paint').focus();
+const enable = document.querySelector('button.paint');
+enable.classList.add("animated");
+//add a click evnebt to enable and call a checkbutton function. If click in input area or drawcontainner, ok, if not remove animation
+
+enable.addEventListener('click',checkButton);
+function checkButton(e){
+    if (e.target.classList.contains('square')){
+        enable.classList.remove('animated');
+    }
+}
+//---------------------------------------------- Button animation not done ---------------------------------
+
+
+//---------------------------------------------- All buttons ------------------------------------------------------------
 
 //check user selection from button.
 const checkPen = document.querySelector('button.paint');
@@ -25,8 +41,19 @@ function changeToRandom(){
     penCondition = 'random';
 }
 
+//clear the board
+const clearScreen = document.querySelector('button.clear');
+clearScreen.addEventListener('click',clear);
+function clear(){
+    const boxes = document.querySelectorAll('div.square');
+    boxes.forEach(box => { box.style.backgroundColor = 'white'       
+    });
+}
 
-//making color squares
+
+//-------------------------------------------- All painting areas --------------------------------------------------------
+
+//making squares for painting
 const draw = document.querySelector('div.draw-container');
 
 function setPaintBoard(){
@@ -57,16 +84,7 @@ function changeSize(){
 changeSize()
 
 
-//get color by color pallet
-const color = document.querySelector('input.colorpick');
-color.addEventListener('input',getColor);
-
-function getColor(e){
-    mouseColor = `${e.target.value}`;
-}
-
-
-//clear the board or deleting all divs in paint board container
+//deleting all divs in paint board container
 function freshBoard(){
     const freshs = document.querySelectorAll('div.square');    
     freshs.forEach(fresh => {
@@ -80,51 +98,90 @@ const pixels = document.querySelector('input.slider');
 pixels.addEventListener('input',setPixel);
 
 function setPixel(e){
-
     pixleValue = e.target.value;
     freshBoard();    
     setPaintBoard();
     changeSize();
-    paint()
+    paint();
 }
 
 
-//pencil or when pointer touch a square, change its color
+//-------------------------------------------- All painting systems --------------------------------------------------------
+
+
+//get color by color pallet
+const color = document.querySelector('input.colorpick');
+color.addEventListener('input',getColor);
+
+function getColor(e){
+    mouseColor = `${e.target.value}`;
+}
+
+
+//swich painting method by checkbox
+const sliding = document.querySelector(`.switch input[type='checkbox']`);
+sliding.addEventListener('change',changePen);
+function changePen(){
+    if(sliding.checked){
+        isSliding=false;
+    }
+    else{
+        isSliding=true;
+    }
+}
+
+
+//check painting method
+const container = document.querySelector('.draw-container');
+
+container.addEventListener('mousedown', (e) => {      
+    e.preventDefault();
+    isClicked = true;
+    changeColor(e);
+});   
+
+container.addEventListener('mouseup', () => {      
+    isClicked = false;
+});  
+
+//when mouse is moved out the container, avoiding it continue painting when it move back
+container.addEventListener('mouseleave', () => {      
+    isClicked = false;
+});   
+
+//enable etch a sketch 
+container.addEventListener('mouseover', () => {   
+    if(isSliding===true){
+        isClicked = true;
+    }   
+});   
+
+
+//For when rescale the paint board, also recalculate the paint area
 function paint(){
     const boxes = document.querySelectorAll('.square');
-    boxes.forEach(box => {box.addEventListener('mouseenter',changeColor)
-    });    
+
+    boxes.forEach(box => {
+        box.addEventListener('mouseover', changeColor);
+    });   
 }
-paint()
+paint();
 
 
 //Change color function. According to the button value, funtion will change to eraser mode. 
 function changeColor(e){
-    if(penCondition==='pen'){
-        e.target.style.backgroundColor = mouseColor;
-    }
-    else if (penCondition==='eraser'){
-        e.target.style.backgroundColor = 'white';
-    }
-    else if (penCondition==='random'){
-        e.target.style.backgroundColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`
-        
-        Math.floor(Math.random() * 256)
-        "rgb(155, 102, 102)"
+    if(isClicked === true){
+        if(penCondition==='pen'){
+            e.target.style.backgroundColor = mouseColor;
+        }
+        else if (penCondition==='eraser'){
+            e.target.style.backgroundColor = 'white';
+        }
+        else if (penCondition==='random'){
+            e.target.style.backgroundColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`
+            
+            Math.floor(Math.random() * 256)
+            "rgb(155, 102, 102)"
+        }
     }
 }
-
-
-const clearScreen = document.querySelector('button.clear');
-clearScreen.addEventListener('click',clear);
-
-//clear the board
-function clear(){
-    const boxes = document.querySelectorAll('div.square');
-    boxes.forEach(box => { box.style.backgroundColor = 'white'       
-    });
-}
-
-
-
-// 随机颜色 切换操作 
