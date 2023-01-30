@@ -3,6 +3,8 @@ let pixleValue = 16;
 let penCondition = 'pen';
 let isClicked = false;
 let isSliding = true;
+let isShowing = true;
+
 
 
 //-----------------------------------------------------------button animation not done---------------------------------
@@ -74,11 +76,11 @@ function changeSize(){
     const widths = document.querySelectorAll('div.square');   
 
     heights.forEach(heigh => {
-        heigh.style.height=`${500/pixleValue-2}px`
+        heigh.style.height=`${500/pixleValue}px`
     });
     
     widths.forEach(widt => {
-        widt.style.width=`${500/pixleValue-2}px`
+        widt.style.width=`${500/pixleValue}px`
     });
 }
 changeSize()
@@ -119,7 +121,7 @@ function getColor(e){
 
 
 //swich painting method by checkbox
-const sliding = document.querySelector(`.switch input[type='checkbox']`);
+const sliding = document.querySelector(`.switch input[type='checkbox'].cslider`);
 sliding.addEventListener('change',changePen);
 function changePen(){
     if(sliding.checked){
@@ -127,6 +129,24 @@ function changePen(){
     }
     else{
         isSliding=true;
+    }
+}
+
+
+//Turn on or turn off grid
+const showGrid = document.querySelector(`.switch input[type='checkbox'].showGrid`);
+showGrid.addEventListener('change',controlGrid);
+function controlGrid(){
+    const boxes = document.querySelectorAll('.square');
+    if(showGrid.checked){
+        boxes.forEach(box => {
+            box.style.borderColor = 'rgb(47, 47, 47)'
+        });
+    }
+    else{
+        boxes.forEach(box => {
+            box.style.borderColor = 'transparent'
+        });    
     }
 }
 
@@ -173,6 +193,7 @@ function changeColor(e){
     if(isClicked === true){
         if(penCondition==='pen'){
             e.target.style.backgroundColor = mouseColor;
+
         }
         else if (penCondition==='eraser'){
             e.target.style.backgroundColor = 'white';
@@ -185,3 +206,5 @@ function changeColor(e){
         }
     }
 }
+
+//size number, button animation
