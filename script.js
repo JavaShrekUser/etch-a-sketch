@@ -207,4 +207,9 @@ function changeColor(e){
     }
 }
 
+function gridNum(e){
+    e.parentElement.querySelector('div.menu').textContent = `Grid Size: ${e.value} X ${e.value}`
+}
+
+
 //size number, button animation

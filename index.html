@@ -13,36 +13,47 @@
         <div class="header">Etch-A-Sketch</div>
 
         <div class="container">
+            <div class="left-container">
+
+                <div class="color-container">
+                    <div class="menu">Pen Color</div>
+                    <div class="roundColorpick">
+                        <input type="color" id="colorChoice" name="head" value="#000000" class="colorpick">
+                    </div>
+                </div>
+
+                <div class="menu-container">
+                    <div class="menu">Click to paint</div>
+                    <label class="switch">
+                        <input type="checkbox" class="cslider">
+                        <span class="cslider"></span>
+                    </label>
+                </div>
+
+                <div class="menu-container">
+                    <div class="menu">Show grid</div>
+                    <label class="switch">
+                        <input type="checkbox" class="showGrid" checked>
+                        <span class="showGrid"></span>
+                    </label>
+                </div>
+
+            </div>
 
             <div class="left-container">
 
-                <div class="menu">Chose a color</div>
-                <div class="roundColorpick">
-                    <input type="color" id="colorChoice" name="head" value="#000000" class="colorpick">
-                </div>
-
-                <div class="menu">Size</div>
-                <input type="range" min="1" max="30" value="16" class="slider">
-
                 <button class="paint">Color</button>  
-
+                
                 <button class="random">Random Color</button>
 
                 <button class="eraser">Eraser</button>
                 
                 <button class="clear">Clear</button>  
-
-                <div class="menu">Random color</div>
-                <label class="switch">
-                    <input type="checkbox" class="cslider">
-                    <span class="cslider"></span>
-                </label>
-
-                <div class="menu">Show grid</div>
-                <label class="switch">
-                    <input type="checkbox" class="showGrid" checked>
-                    <span class="showGrid"></span>
-                </label>
+                
+                <div class="size-container">
+                    <div class="menu">Grid Size: 16 X 16</div>
+                    <input type="range" min="1" max="30" value="16" class="slider" oninput="gridNum(this)">
+                </div>
 
             </div>
 

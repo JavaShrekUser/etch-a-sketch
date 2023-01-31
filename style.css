@@ -10,7 +10,7 @@ body{
 .square{
     background-color: white;
     border: 1px solid rgb(47, 47, 47);
-    margin: -1px; 
+    box-sizing: border-box;
 }
 
 .draw-container{
@@ -18,7 +18,7 @@ body{
     width: 500px;
     display: flex;
     flex-wrap: wrap;
-    border: 2px solid black;
+    border: 1px solid black;
     justify-content: center;
     align-items: center;
 }
@@ -26,22 +26,20 @@ body{
 .right-container{
     display: flex;
     align-items: center;
-    margin-left: 160px;
-
 }
 
 .left-container{
     display: flex;
     align-items: center;
-    flex-direction: column  ;
-}
+    flex-direction: column ;
+    }
 
 .container{
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
-    width: 100%;
+    width: 100%;    
 }
 
 .header{
@@ -49,19 +47,19 @@ body{
     width: 100%;
     justify-content: center;
     align-items: center;
-    font-size: 56px;
-    margin-top: 24px;
+    font-size: 54px;
+    margin-top: 18px;
     font-family: Monaco;
 }
 
 .footer{
-
+    margin-bottom: 10px;
 }
 
 .roundColorpick{
     border-radius: 50%;
-    width: 80px;
-    height: 80px; 
+    width: 60px;
+    height: 60px; 
     overflow: hidden;
 }
 
@@ -71,11 +69,37 @@ input[type=color]{
     width: 200%;
     height: 200%;
     cursor: pointer;
-    transform: translate(-25%, -25%)
+    transform: translate(-25%, -25%);
 }
 
 .menu{
 
+}
+
+.menu-container,
+.size-container,
+.color-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 170px;
+    height: 70px;
+    border: 2px solid black;
+    border-radius: 10px;
+    justify-content: space-evenly;
+    margin-bottom: 5px;
+    border: 2px solid rgb(0, 0, 0);
+    box-shadow: 3px 3px 10px #888888;
+}
+
+.size-container{
+    height: 42px;
+    box-sizing: border-box;
+    margin: 5px;
+}
+
+.color-container{
+    height: 100px;
 }
 /*-------------------------------------- paint switch --------------------------------------*/
 
