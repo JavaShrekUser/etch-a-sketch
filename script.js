@@ -76,11 +76,11 @@ function changeSize(){
     const widths = document.querySelectorAll('div.square');   
 
     heights.forEach(heigh => {
-        heigh.style.height=`${500/pixleValue}px`
+        heigh.style.height=`${550/pixleValue}px`
     });
     
     widths.forEach(widt => {
-        widt.style.width=`${500/pixleValue}px`
+        widt.style.width=`${550/pixleValue}px`
     });
 }
 changeSize()
@@ -213,3 +213,4 @@ function gridNum(e){
 
 
 //size number, button animation
+//clear之后重新激活paint

@@ -16,31 +16,11 @@
             <div class="left-container">
 
                 <div class="color-container">
-                    <div class="menu">Pen Color</div>
                     <div class="roundColorpick">
                         <input type="color" id="colorChoice" name="head" value="#000000" class="colorpick">
                     </div>
+                    <div class="pen">Pen Color</div>
                 </div>
-
-                <div class="menu-container">
-                    <div class="menu">Click to paint</div>
-                    <label class="switch">
-                        <input type="checkbox" class="cslider">
-                        <span class="cslider"></span>
-                    </label>
-                </div>
-
-                <div class="menu-container">
-                    <div class="menu">Show grid</div>
-                    <label class="switch">
-                        <input type="checkbox" class="showGrid" checked>
-                        <span class="showGrid"></span>
-                    </label>
-                </div>
-
-            </div>
-
-            <div class="left-container">
 
                 <button class="paint">Color</button>  
                 
@@ -55,7 +35,23 @@
                     <input type="range" min="1" max="30" value="16" class="slider" oninput="gridNum(this)">
                 </div>
 
+                <div class="menu-container">
+                    <div class="switch-text">Click Board</div>
+                    <label class="switch">
+                        <input type="checkbox" class="cslider">
+                        <span class="cslider" id="slider"></span>
+                    </label>
+                </div>
+
+                <div class="menu-container">
+                    <div class="switch-text">Show Grid</div>
+                    <label class="switch">
+                        <input type="checkbox" class="showGrid" checked>
+                        <span class="showGrid" id="slider"></span>
+                    </label>
+                </div>
             </div>
+
 
             <div class="right-container">
                 <div class="draw-container"></div>
