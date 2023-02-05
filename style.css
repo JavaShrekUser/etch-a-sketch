@@ -8,53 +8,34 @@ body{
 }
 
 .square{
-    background-color: white;
+    background-color: #0000;
     border: 1px solid rgb(47, 47, 47);
     box-sizing: border-box;
-}
-
-.draw-container{
-    height: 550px;
-    width: 550px;
-    display: flex;
-    flex-wrap: wrap;
-    border: 1px solid black;
-    justify-content: center;
-    align-items: center;
-    margin-left: 70px;
-}
-
-.right-container{
-    display: flex;
-    align-items: center;
-}
-
-.left-container{
-    display: flex;
-    align-items: center;
-    flex-direction: column ;
-    }
-
-.container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;    
 }
 
 .header{
     display: flex;
     width: 100%;
+    height: 200px;
     justify-content: center;
     align-items: center;
     font-size: 54px;
-    margin-top: 18px;
-    font-family: Monaco;
+    font-family: 'VT323', monospace;
+    font-weight: bold;
+    text-shadow: 2px 2px #4b9996;
+    color:#5cbdb9;
+    background-color: #ebf6f5;
 }
 
 .footer{
-    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+    height: 46px;
+    background-color: #5cbdb9;
+    color: #ffffff;
+
 }
 
 .roundColorpick{
@@ -62,6 +43,20 @@ body{
     width: 60px;
     height: 60px; 
     overflow: hidden;
+}
+
+.pen{
+    font-size: 18px;
+    color: #45bdb9;
+    font-weight: bold;
+}
+
+.switch-text{
+    display: flex;
+    width: 110px;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 input[type=color]{
@@ -75,18 +70,44 @@ input[type=color]{
 
 input[type=range]{
     width: 168px;
+    accent-color:#45bdb9ed;
 }
 
-.pen{
-    font-size: 18px;
-}
-
-.switch-text{
+.draw-container{
+    height: 550px;
+    width: 550px;
     display: flex;
-    width: 110px;
+    flex-wrap: wrap;
+    border: 1px solid black;
     justify-content: center;
     align-items: center;
-    
+    margin-left: 70px;
+    background-color: white;
+    box-shadow: 15px 15px 0px 0px rgba(75,153,150,0.3);
+}
+
+.right-container{
+    display: flex;
+    align-items: center;
+    margin-bottom: 100px;
+
+}
+
+.left-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column ;
+    margin-bottom: 100px;
+
+    }
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;  
+    background-color: #ebf6f5;  
 }
 
 .menu-container,
@@ -202,7 +223,7 @@ button{
 button.random {
     --width: 170px;
     --timing: 1s;
-    background-image: linear-gradient(130deg, #53cbef 0%, #dcc66c 50%, #ffa3b6 75%, #53cbef 100%);
+    background-image: linear-gradient(130deg, #ffa3b6 0%, #dcc66c 50%, #53cbef 75%, #ffa3b6 100%);
 }
 
 button.random:focus{

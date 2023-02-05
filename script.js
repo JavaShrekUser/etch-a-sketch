@@ -48,7 +48,7 @@ const clearScreen = document.querySelector('button.clear');
 clearScreen.addEventListener('click',clear);
 function clear(){
     const boxes = document.querySelectorAll('div.square');
-    boxes.forEach(box => { box.style.backgroundColor = 'white'       
+    boxes.forEach(box => { box.style.backgroundColor = '#0000'       
     });
 }
 
@@ -196,7 +196,7 @@ function changeColor(e){
 
         }
         else if (penCondition==='eraser'){
-            e.target.style.backgroundColor = 'white';
+            e.target.style.backgroundColor = '#0000';
         }
         else if (penCondition==='random'){
             e.target.style.backgroundColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`
@@ -212,5 +212,28 @@ function gridNum(e){
 }
 
 
-//size number, button animation
-//clear之后重新激活paint
+// const downloadBtn = document.createElement('button');
+// downloadBtn.innerText = 'Download PNG';
+// downloadBtn.addEventListener('click', downloadPNG);
+
+// function downloadPNG() {
+// const canvas = document.createElement('canvas');
+// const squares = document.querySelectorAll('.square');
+// canvas.width = pixleValue;
+// canvas.height = pixleValue;
+// const ctx = canvas.getContext('2d');
+
+// squares.forEach((square, index) => {
+// ctx.fillStyle = square.style.backgroundColor;
+// const x = index % pixleValue;
+// const y = Math.floor(index / pixleValue);
+// ctx.fillRect(x, y, 1, 1);
+// });
+
+// const link = document.createElement('a');
+// link.href = canvas.toDataURL();
+// link.download = 'paint.png';
+// link.click();
+// }
+
+// document.querySelector('div.draw-container').appendChild(downloadBtn);
